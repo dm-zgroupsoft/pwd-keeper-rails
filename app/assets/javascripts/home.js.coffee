@@ -2,20 +2,25 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
-  $("#jstree_holder").jstree("plugins": ["themes", "ui", "crrm", "contextmenu", "json_data"]
-  ,"json_data": {"ajax": {"url": "/groups", "data": (n) -> {"id" : null}}}
-  ,"core" : {"initially_open" : [ "node_0"]}
-  ,"types": {"types": {"group": {}}})
+  $("#jstree_holder").jstree("plugins": ["themes", "ui", "crrm", "contextmenu", "json_data"], "json_data": {"ajax": {"url": "/groups"}})
+
+  # create group/subgroup
   .bind("create.jstree", (e, data) ->
     $.post "/groups", {
-    "group[group_id]": (data.rslt.parent.attr("id").replace("node_","") if data.rslt.parent != -1)
+    "group[group_id]": data.rslt.parent.attr("id").replace "node_", "" if data.rslt.parent != -1
     "group[position]": data.rslt.position,
     "group[title]": data.rslt.name,
-    "group[icon]": data.rslt.obj.attr("rel")}, (result) ->
-      $(data.rslt.obj).attr("id", "node_" + result.id);
-    )
+    "group[icon]": data.rslt.obj.attr("rel") || 'assets/rails.png'
+    },
+    (result) ->
+      $(data.rslt.obj).attr "id", "node_#{result}"
+  )
+
+  # remove group/subgroup
+  .bind("remove.jstree", (e, data) ->
+    data.rslt.obj.each ->
+      $.ajax {async: false, type: 'DELETE', url: "/groups/#{this.id.replace "node_", ""}"}
+  )
 
   $("#menu button").click ->
-    switch this.id
-      when "add_group" then $("#jstree_holder").jstree "create", null, "last", {"attr":
-        { "rel": "group" }}
+    $("#jstree_holder").jstree this.id
