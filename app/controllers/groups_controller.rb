@@ -1,13 +1,13 @@
 class GroupsController < ApplicationController
 
   def index
-    groups = Group.where(:group_id => nil)
-    puts groups.to_json
+    groups = current_user.groups.where(:group_id => nil)
     render :json => groups
   end
 
   def create
-    group = Group.create(params[:group])
+    group = current_user.groups.build(params[:group])
+    current_user.save
     render :text => group.id
   end
 
