@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = current_user.groups.build(params[:group])
+    group = current_user.groups.build(params.require(:group).permit!)
     current_user.save
     render :text => group.id
   end

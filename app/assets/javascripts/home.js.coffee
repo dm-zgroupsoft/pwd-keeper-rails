@@ -1,6 +1,6 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $("#jstree_holder").jstree("plugins": ["themes", "ui", "crrm", "contextmenu", "json_data"], "json_data": {"ajax": {"url": "/groups"}})
 

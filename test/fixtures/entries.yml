@@ -6,8 +6,6 @@ one:
   login: MyString
   password: MyString
   url: MyString
-  notes: MyString
-  group_id: 1
 
 two:
   title: MyString
@@ -15,5 +13,3 @@ two:
   login: MyString
   password: MyString
   url: MyString
-  notes: MyString
-  group_id: 1
