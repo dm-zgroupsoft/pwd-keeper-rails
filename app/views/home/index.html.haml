@@ -1,6 +1,13 @@
 #menu
-  %button{:id => 'create'}Add Group
-  %button{:id => 'remove'}Remove Group
+  %button#add_group Add group
 #content
+  #groups_tree_holder
   #group_content
-  #jstree_holder
+
+  #edit_group_dialog{title: 'Add/edit group'}
+    %form
+      %fieldset
+        %label{for: 'title'} Title:
+        %input#group_id{type: 'hidden', name: 'group[group_id]'}
+        %input{type: 'hidden', name: 'group[icon]', value: '/assets/def.png'}
+        %input.text.ui-widget-content.ui-corner-all#title{type: 'text', name: 'group[title]'}

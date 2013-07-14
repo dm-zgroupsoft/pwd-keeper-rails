@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.dialog
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.jstree
+//= require jquery.dynatree
+//= require jquery.contextMenu
 //= require_tree .

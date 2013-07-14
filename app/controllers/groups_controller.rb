@@ -7,12 +7,12 @@ class GroupsController < ApplicationController
 
   def create
     group = current_user.groups.build(params.require(:group).permit!)
-    current_user.save
-    render :text => group.id
+    group.save
+    render :json => group
   end
 
   def destroy
     Group.destroy(params[:id])
-    render :nothing => true
+    render :text => params[:id]
   end
 end
