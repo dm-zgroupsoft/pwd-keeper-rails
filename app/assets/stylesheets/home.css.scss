@@ -1,8 +1,8 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-  font-size: 62.5%;
+.ui-widget {
+  font-size: 12px;
 }
 
 input.text {
@@ -16,6 +16,6 @@ fieldset {
   margin-top: 25px;
 }
 
-#groups_tree_holder  {
+#groups_tree_holder {
   width: 500px;
 }

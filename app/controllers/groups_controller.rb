@@ -11,6 +11,11 @@ class GroupsController < ApplicationController
     render :json => group
   end
 
+  def update
+    group = Group.update(params[:id], params.require(:group).permit(:title))
+    render :json => group
+  end
+
   def destroy
     Group.destroy(params[:id])
     render :text => params[:id]

@@ -30,6 +30,7 @@ $ ->
 
   # edit group
   editGroup = (group) ->
+    $('#key').val group.data.key
     $('#title').val group.data.title
     $('#edit_group_dialog').dialog 'open'
 
@@ -45,12 +46,19 @@ $ ->
   modal: true,
   close: ->
     $(this).find('form input').val('')
+    $('input[name="group[icon]"]').val('/assets/def.png')
   ,
   buttons: Ok: ->
-    $.post '/groups', $(this).find('form').serialize(), (result) ->
-      parent = if result.group_id then holder.dynatree('getTree').getNodeByKey result.group_id.toString() else holder.dynatree('getRoot')
-      parent.addChild(result)
-      parent.expand()
+    if $('#key').val().length
+      $.ajax("/groups/#{$('#key').val()}", method: 'put', data: $(this).find('form').serialize()).done (data) ->
+        node = holder.dynatree('getTree').getNodeByKey data.key.toString()
+        node.data.title = data.title
+        node.render()
+    else
+      $.post '/groups', $(this).find('form').serialize(), (result) ->
+        parent = if result.group_id then holder.dynatree('getTree').getNodeByKey result.group_id.toString() else holder.dynatree('getRoot')
+        parent.addChild(result)
+        parent.expand()
     $(this).dialog 'close'
   , Cancel: ->
     $(this).dialog 'close'
