@@ -1,16 +1,22 @@
 $ ->
   # create groups tree
   holder = $('#groups_tree_holder').dynatree initAjax: {url: '/groups'}, dnd: preventVoidMoves: true, onDragStart: (node) ->
+    console.log "tree.onDragStart"
     true
+  , onDragEnter: (node, sourceNode) ->
+    console.log "enter drag"
+    ["before", "after"]
   , onDrop: (node, sourceNode, hitMode, ui, draggable) ->
+    console.log "tree.onDrop"
     sourceNode.move node, hitMode
 
   # activate tree nodes by right mouse too
-  holder.mousedown (e) ->
-    if e.button == 2 && e.target.tagName == 'A'
-      e.target.click()
+  #holder.mousedown (e) ->
+   # if e.button == 2 && e.target.tagName == 'A'
+    #  e.target.click()
 
   # attach context menu to each group in tree
+  ###
   holder.contextMenu selector: 'a', callback: (key, options) ->
     node = $.ui.dynatree.getNode this
     switch key
@@ -24,7 +30,7 @@ $ ->
     remove: {name: 'Remove group', icon: 'delete'},
     separator: '---'
     quit: {name: 'Quit', icon: 'quit'},
-
+  ###
   # context menu actions
   # add group
   addGroup = (parent) ->
