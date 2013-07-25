@@ -1,13 +1,15 @@
 $ ->
   # create groups tree
   holder = $('#groups_tree_holder').dynatree initAjax: {url: '/groups'}, dnd: preventVoidMoves: true, onDragStart: (node) ->
-    console.log "tree.onDragStart"
     true
   , onDragEnter: (node, sourceNode) ->
-    console.log "enter drag"
-    ["before", "after"]
+      true
+  , onDragOver: (node, sourceNode, hitMode) ->
+      if node.isDescendantOf sourceNode
+        false
+      if !node.data.isFolder && hitMode == 'over'
+        'after'
   , onDrop: (node, sourceNode, hitMode, ui, draggable) ->
-    console.log "tree.onDrop"
     sourceNode.move node, hitMode
 
   # activate tree nodes by right mouse too
