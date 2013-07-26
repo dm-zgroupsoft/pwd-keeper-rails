@@ -5,6 +5,6 @@ class Group < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
 
   def as_json(options = {})
-    super(only: [:title, :icon, :group_id]).merge(key: id, children: children.as_json)
+    super(only: [:title, :icon, :group_id]).merge(key: id, url: Rails.application.routes.url_helpers.group_entries_path(id),children: children.as_json)
   end
 end
