@@ -1,7 +1,6 @@
 $ ->
   # create groups tree
   holder = $('#groups_tree_holder').dynatree initAjax: {url: '/groups'}, onActivate: (node)->
-    console.log node.data.url
     $('#entries_holder').load(node.data.url)
   ,
   dnd: preventVoidMoves: true, onDragStart: (node) ->
