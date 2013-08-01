@@ -3,8 +3,9 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Group'
   has_many :children, :class_name => 'Group', :dependent => :destroy
   has_many :entries, :dependent => :destroy
+  attr_accessor :activate
 
   def as_json(options = {})
-    super(only: [:title, :icon, :group_id]).merge(key: id, url: Rails.application.routes.url_helpers.group_entries_path(id),children: children.as_json)
+    super(only: [:title, :icon, :group_id]).merge(activate: activate, key: id, url: Rails.application.routes.url_helpers.group_entries_path(id),children: children.as_json)
   end
 end

@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
 
   def index
     groups = current_user.groups.where(:group_id => nil)
+    groups[0].activate = true
     render :json => groups
   end
 
