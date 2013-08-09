@@ -6,5 +6,6 @@ class EntriesController < ApplicationController
 
   def new
     @entry = Entry.new
+    render 'edit'
   end
 end
