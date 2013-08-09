@@ -1,1 +1,9 @@
 = form_for @entry do
+ = label_tag 'title'
+ = text_field @entry, 'title'
+ = label_tag 'login'
+ = text_field @entry, 'login'
+ = label_tag 'password'
+ = password_field @entry, 'password'
+ = label_tag 'icon'
+ = text_field @entry, 'icon'
