@@ -16,12 +16,12 @@ $ ->
     sourceNode.move node, hitMode
 
   # activate tree nodes by right mouse too
-  #holder.mousedown (e) ->
-   # if e.button == 2 && e.target.tagName == 'A'
-    #  e.target.click()
+  holder.mousedown (e) ->
+    if e.button == 2 && e.target.tagName == 'A'
+      e.target.click()
 
   # attach context menu to each group in tree
-  ###
+
   holder.contextMenu selector: 'a', callback: (key, options) ->
     node = $.ui.dynatree.getNode this
     switch key
@@ -35,7 +35,7 @@ $ ->
     remove: {name: 'Remove group', icon: 'delete'},
     separator: '---'
     quit: {name: 'Quit', icon: 'quit'},
-  ###
+
   # context menu actions
   # add group
   addGroup = (parent) ->
