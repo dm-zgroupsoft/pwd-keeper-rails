@@ -14,7 +14,6 @@
 //= require jquery.ui.dialog
 //= require jquery.ui.droppable
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.dynatree
 //= require jquery.contextMenu
 //= require_tree .

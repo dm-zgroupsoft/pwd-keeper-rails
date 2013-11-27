@@ -1,18 +1,18 @@
-!!!
-%html
- %head
-  %title Password keeper
+doctype html
+html
+ head
+  title Password keeper
   = stylesheet_link_tag :application, :media => 'all'
   = javascript_include_tag :application
   = csrf_meta_tags
- %body
+ body
   #content
    #header
    #navigation
    #body
-    %p.notice
+    p.notice
      = notice
-    %p.alert
+    p.alert
      = alert
     = yield
    #footer
