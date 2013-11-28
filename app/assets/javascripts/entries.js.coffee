@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# create add/edit record dialog
+$('#edit_record_dialog').dialog autoOpen: false,
+height: 320,
+width: 380,
+modal: true,
+close: ->
+  $(this).find('form input').val('')
+  $('input[name="group[icon]"]').val('/assets/def.png')
+,
+buttons: Ok: ->
+  $(this).dialog 'close'
+, Cancel: ->
+  $(this).dialog 'close'

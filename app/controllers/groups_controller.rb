@@ -1,9 +1,24 @@
 class GroupsController < ApplicationController
 
   def index
-    groups = current_user.groups.where(:group_id => nil)
-    groups[0].activate = true if groups.present?
-    render :json => groups
+    respond_to do |format|
+      format.html
+      format.json do
+        groups = current_user.groups.where(:group_id => nil)
+        groups[0].activate = true if groups.present?
+        render :json => groups
+      end
+    end
+  end
+
+  def new
+    @group = Group.new(:group_id => params[:group_id])
+    render :layout => false
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+    render :layout => false
   end
 
   def create
@@ -13,7 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    group = Group.update(params[:id], params.require(:group).permit(:title))
+    group = Group.update(params[:id], params.require(:group).permit!)
     render :json => group
   end
 
