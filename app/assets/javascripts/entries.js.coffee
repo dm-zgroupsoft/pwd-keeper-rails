@@ -1,13 +1,7 @@
-# create add/edit record dialog
-$('#edit_record_dialog').dialog autoOpen: false,
-height: 320,
-width: 380,
-modal: true,
-close: ->
-  $(this).find('form input').val('')
-  $('input[name="group[icon]"]').val('/assets/def.png')
-,
-buttons: Ok: ->
-  $(this).dialog 'close'
-, Cancel: ->
-  $(this).dialog 'close'
+# create add/edit entry dialog
+window.editEntryDialog = () ->
+  $('#edit_entry_dialog').dialog height: 280, width: 400, modal: true,
+  buttons: Ok: ->
+    $(this).dialog 'close'
+  , Cancel: ->
+    $(this).dialog 'close'

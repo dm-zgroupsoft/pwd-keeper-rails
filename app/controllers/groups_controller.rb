@@ -5,7 +5,6 @@ class GroupsController < ApplicationController
       format.html
       format.json do
         groups = current_user.groups.where(:group_id => nil)
-        groups[0].activate = true if groups.present?
         render :json => groups
       end
     end

@@ -42,11 +42,11 @@ $ ->
   # context menu actions
   # add group
   addGroup = (parent) ->
-    $('#group_dialog_holder').load "/groups/new?group_id=#{if parent.getLevel() then parent.data.key else ''}", openGroupDialog
+    $('#group_dialog_holder').load "/groups/new?group_id=#{if parent.getLevel() then parent.data.key else ''}", editGroupDialog
 
   # edit group
   editGroup = (group) ->
-    $('#group_dialog_holder').load "/groups/#{group.data.key}/edit", openGroupDialog
+    $('#group_dialog_holder').load "/groups/#{group.data.key}/edit", editGroupDialog
 
   # remove group
   removeGroup = (group) ->
@@ -55,14 +55,13 @@ $ ->
 
   # add new record
   addNewRecord = (group) ->
-    $('#edit_record_dialog').dialog 'open'
+    $('#group_dialog_holder').load "/groups/#{group.data.key}/entries/new", editEntryDialog
 
   # create add/edit group dialog
-  openGroupDialog = () ->
+  editGroupDialog = () ->
     $('#edit_group_dialog').dialog height: 220, width: 280, modal: true,
     buttons: Ok: ->
-      console.log $('#group_id')
-      is_new = $('#group_id').val().length == 0
+      is_new = $(this).find('form #group_id').val().length == 0
       $.ajax($(this).find('form').attr('action'), method: $(this).find('form').attr('method'), data: $(this).find('form').serialize()).done (result) ->
         if is_new
           parent = if result.group_id then holder.dynatree('getTree').getNodeByKey result.group_id.toString() else holder.dynatree('getRoot')

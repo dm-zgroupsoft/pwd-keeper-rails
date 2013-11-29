@@ -17,6 +17,3 @@
 //= require jquery.dynatree
 //= require jquery.contextMenu
 //= require_tree .
-function entries_init() {
-    console.log($('#entries-data').data('url-new'));
-}

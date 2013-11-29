@@ -5,7 +5,11 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entry.new
-    render 'edit'
+    @group = Group.find(params[:group_id])
+    @entry = @group.entries.build
+  end
+
+  def edit
+    @entry = Entry.find(params[:id])
   end
 end
