@@ -1,4 +1,4 @@
-#entries_holder {
+#entries-holder {
   border: 1px solid gray;
   width: 498px;
   height: 200px;
@@ -6,4 +6,11 @@
 
 .max-width {
   width: 100%;
+}
+
+.entries-list {
+  border-collapse: collapse;
+  tbody tr:hover {
+    background-color: #f2f7fd;
+  }
 }

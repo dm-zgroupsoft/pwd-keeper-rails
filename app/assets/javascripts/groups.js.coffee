@@ -1,17 +1,17 @@
 $ ->
   # create groups tree
-  holder = $('#groups_tree_holder').dynatree initAjax: {url: '/groups'}, onActivate: (node)->
-    $('#entries_holder').load(node.data.url)
+  holder = $('#groups-tree-holder').dynatree initAjax: {url: '/groups'}, onActivate: (node)->
+    $('#entries-holder').load(node.data.url)
   ,
   dnd: preventVoidMoves: true, onDragStart: (node) ->
     true
   , onDragEnter: (node, sourceNode) ->
       true
+  , onDragStart: (node, sourceNode) ->
+      true
   , onDragOver: (node, sourceNode, hitMode) ->
       if node.isDescendantOf sourceNode
         false
-      if !node.data.isFolder && hitMode == 'over'
-        'after'
   , onDrop: (node, sourceNode, hitMode, ui, draggable) ->
     sourceNode.move node, hitMode
 
@@ -28,7 +28,7 @@ $ ->
       when 'add' then addGroup node
       when 'edit' then editGroup node
       when 'remove' then removeGroup node
-      when 'add_new_record' then addNewRecord node
+      when 'add_new_record' then addNewEntry node
   ,
   items:
     add: {name: 'Add subgroup', icon: 'add'},
@@ -40,22 +40,19 @@ $ ->
     quit: {name: 'Quit', icon: 'quit'},
 
   # context menu actions
-  # add group
   addGroup = (parent) ->
-    $('#group_dialog_holder').load "/groups/new?group_id=#{if parent.getLevel() then parent.data.key else ''}", editGroupDialog
+    $('#group-dialog-holder').load "/groups/new?group_id=#{if parent.getLevel() then parent.data.key else ''}", editGroupDialog
 
-  # edit group
   editGroup = (group) ->
-    $('#group_dialog_holder').load "/groups/#{group.data.key}/edit", editGroupDialog
+    $('#group-dialog-holder').load "/groups/#{group.data.key}/edit", editGroupDialog
 
-  # remove group
   removeGroup = (group) ->
     $.ajax("/groups/#{group.data.key}", method: 'delete').done (data) ->
       holder.dynatree('getTree').getNodeByKey(data).remove()
 
-  # add new record
-  addNewRecord = (group) ->
-    $('#group_dialog_holder').load "/groups/#{group.data.key}/entries/new", editEntryDialog
+  # add new entry
+  addNewEntry = (group) ->
+    $('#group-dialog-holder').load "/groups/#{group.data.key}/entries/new", editEntryDialog
 
   # create add/edit group dialog
   editGroupDialog = () ->
@@ -76,5 +73,5 @@ $ ->
       $(this).dialog 'close'
 
   # add group to root node
-  $('#add_group').click ->
+  $('#add-group').click ->
     addGroup holder.dynatree('getRoot')

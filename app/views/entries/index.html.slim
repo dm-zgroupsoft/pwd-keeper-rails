@@ -1,1 +1,14 @@
-= @entries.inspect
+table.entries-list
+  thead
+    tr
+      th colspan = '2' Title
+      th Login
+      th Url
+      th Password
+  - @entries.each do |entry|
+    tr
+      td = image_tag entry.icon
+      td = entry.title
+      td = '******'
+      td = link_to entry.url, entry.url, {:only_path => false}
+      td = '******'

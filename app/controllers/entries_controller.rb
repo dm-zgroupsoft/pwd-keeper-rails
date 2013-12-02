@@ -12,4 +12,10 @@ class EntriesController < ApplicationController
   def edit
     @entry = Entry.find(params[:id])
   end
+
+  def create
+    entry = Entry.new(params.require(:entry).permit!)
+    entry.save
+    render :json => entry
+  end
 end
