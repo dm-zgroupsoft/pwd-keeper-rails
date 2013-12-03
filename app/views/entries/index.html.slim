@@ -7,7 +7,8 @@ table.entries-list
       th Password
   - @entries.each do |entry|
     tr
-      td = image_tag entry.icon
+      td
+        div.icon-base
       td = entry.title
       td = '******'
       td = link_to entry.url, entry.url, {:only_path => false}
