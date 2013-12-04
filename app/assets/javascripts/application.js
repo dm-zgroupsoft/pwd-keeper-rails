@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require jquery.dynatree
 //= require jquery.contextMenu
+//= require jquery.selectBoxIt
 //= require_tree .

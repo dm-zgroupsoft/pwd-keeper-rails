@@ -2,10 +2,10 @@
 
 one:
   title: MyString
-  icon: MyString
+  icon: 1
   position: 1
 
 two:
   title: MyString
-  icon: MyString
+  icon: 1
   position: 1

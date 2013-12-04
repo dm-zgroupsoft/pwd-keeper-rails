@@ -2,14 +2,14 @@
 
 one:
   title: MyString
-  icon: MyString
+  icon: 1
   login: MyString
   password: MyString
   url: MyString
 
 two:
   title: MyString
-  icon: MyString
+  icon: 1
   login: MyString
   password: MyString
   url: MyString

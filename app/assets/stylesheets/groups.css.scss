@@ -2,15 +2,13 @@
   font-size: 12px;
 }
 
+#edit-group-dialog {
+  overflow: visible;
+}
+
 input.text {
   width: 95%;
   padding: .4em;
-}
-
-fieldset {
-  padding: 0;
-  border: 0;
-  margin-top: 25px;
 }
 
 #jstree_holder {

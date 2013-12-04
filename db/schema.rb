@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(version: 20130221143500) do
 
   create_table "entries", force: true do |t|
-    t.string   "title",      null: false
-    t.string   "icon",       null: false
+    t.string   "title",                            null: false
+    t.integer  "icon",       limit: 4, default: 0, null: false
     t.string   "login"
-    t.string   "password",   null: false
+    t.string   "password",                         null: false
     t.string   "url"
-    t.integer  "group_id",   null: false
+    t.integer  "group_id",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20130221143500) do
   add_index "entries", ["group_id"], name: "index_entries_on_group_id"
 
   create_table "groups", force: true do |t|
-    t.string   "title",                  null: false
-    t.string   "icon",                   null: false
-    t.integer  "position",   default: 0, null: false
+    t.string   "title",                            null: false
+    t.integer  "icon",       limit: 4, default: 0, null: false
+    t.integer  "position",             default: 0, null: false
     t.integer  "group_id"
-    t.integer  "user_id",                null: false
+    t.integer  "user_id",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

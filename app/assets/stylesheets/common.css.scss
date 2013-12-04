@@ -1,7 +1,30 @@
-.icon-base {
+.form-table {
+  border-spacing: 10px;
+}
+
+.icon-base, .custom-dynatree-icon-base span.dynatree-icon {
   background-image: url('icons.png');
   background-repeat: no-repeat;
-  background-position: 0px 0px;
   width: 16px;
   height: 16px;
+}
+
+@for $i from 0 through 68 {
+  .icon-#{$i}, .custom-dynatree-icon-#{$i} span.dynatree-icon {
+    background-position: #{-16 * $i}px 0px;
+  }
+}
+
+.selectboxit-container span, .selectboxit-container .selectboxit-options a {
+  height: 24px;
+  line-height: 24px;
+}
+
+.selectboxit-list > .selectboxit-focus > .selectboxit-option-anchor {
+  background-color: lightgray;
+  background-image: none;
+}
+
+.selectboxit-arrow-container {
+  width: 24px;
 }

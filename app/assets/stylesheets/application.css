@@ -12,5 +12,6 @@
  *= require jquery.ui.dialog
  *= require dynatree/ui.dynatree
  *= require contextmenu/jquery.contextMenu
+ *= require jquery.selectBoxIt
  *= require_tree .
  */

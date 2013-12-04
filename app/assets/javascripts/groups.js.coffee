@@ -56,7 +56,8 @@ $ ->
 
   # create add/edit group dialog
   editGroupDialog = () ->
-    $('#edit_group_dialog').dialog height: 220, width: 280, modal: true,
+    $('select').selectBoxIt()
+    $('#edit-group-dialog').dialog height: 220, width: 280, modal: true,
     buttons: Ok: ->
       is_new = $(this).find('form #group_id').val().length == 0
       $.ajax($(this).find('form').attr('action'), method: $(this).find('form').attr('method'), data: $(this).find('form').serialize()).done (result) ->
@@ -67,6 +68,7 @@ $ ->
         else
           node = holder.dynatree('getTree').getNodeByKey result.key.toString()
           node.data.title = result.title
+          node.data.addClass = result.addClass
           node.render()
       $(this).dialog 'close'
     , Cancel: ->
