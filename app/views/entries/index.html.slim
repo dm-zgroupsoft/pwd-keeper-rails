@@ -8,7 +8,7 @@ table.entries-list
   - @entries.each do |entry|
     tr
       td
-        div.icon-base
+        div.icon-base class="icon-#{entry.icon}"
       td = entry.title
       td = '******'
       td = link_to entry.url, entry.url, {:only_path => false}
