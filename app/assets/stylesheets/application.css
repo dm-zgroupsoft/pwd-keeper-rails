@@ -13,5 +13,6 @@
  *= require dynatree/ui.dynatree
  *= require contextmenu/jquery.contextMenu
  *= require jquery.selectBoxIt
+ *= require tablesorter/theme.jui
  *= require_tree .
  */

@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   layout false
   def index
-    @entries = Entry.where(:group_id => params[:group_id]).to_a
+    @entries = Entry.where(:group_id => params[:group_id]).order(title: :asc)
   end
 
   def new

@@ -17,4 +17,6 @@
 //= require jquery.dynatree
 //= require jquery.contextMenu
 //= require jquery.selectBoxIt
+//= require jquery.tablesorter
+//= require jquery.tablesorter.widgets
 //= require_tree .

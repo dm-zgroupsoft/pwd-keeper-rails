@@ -1,7 +1,8 @@
 $ ->
   # create groups tree
   holder = $('#groups-tree-holder').dynatree initAjax: {url: '/groups'}, onActivate: (node)->
-    $('#entries-holder').load(node.data.url)
+    $('#entries-holder').load node.data.url, () ->
+      $("#entries-table").tablesorter({theme: 'jui', headerTemplate: '{content} {icon}', widgets: ['uitheme', 'zebra'], sortList: [[0,0]] })
   ,
   dnd: preventVoidMoves: true, onDragStart: (node) ->
     true
@@ -57,7 +58,7 @@ $ ->
   # create add/edit group dialog
   editGroupDialog = () ->
     $('select').selectBoxIt()
-    $('#edit-group-dialog').dialog height: 220, width: 280, modal: true,
+    $('#edit-group-dialog').dialog height: 180, width: 360, modal: true,
     buttons: Ok: ->
       is_new = $(this).find('form #group_id').val().length == 0
       $.ajax($(this).find('form').attr('action'), method: $(this).find('form').attr('method'), data: $(this).find('form').serialize()).done (result) ->

@@ -3,17 +3,25 @@
 }
 
 #entries-holder {
-  border: 1px solid gray;
-  width: 498px;
-  height: 200px;
+  border: 1px dotted gray;
+  border-left: none;
+  width: 600px;
+  height: 506px;
+  float: left;
 }
 
-.max-width {
-  width: 100%;
-}
-
-.entries-list {
-  tbody tr:hover {
-    background-color: #f2f7fd;
+#entries-table {
+  border: 0;
+  padding: 0;
+  th {
+    font-size: 14px;
   }
+  .icon-column {
+    width: 18px;
+    text-align: center;
+  }
+}
+
+.tablesorter-jui {
+  margin: 0;
 }

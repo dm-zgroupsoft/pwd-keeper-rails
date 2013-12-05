@@ -1,3 +1,11 @@
+table {
+  border-spacing: 0;
+  width: 100%;
+  td, th {
+    padding: 0;
+  }
+}
+
 .form-table {
   border-spacing: 10px;
 }

@@ -1,15 +1,17 @@
-table.entries-list
-  thead
-    tr
-      th colspan = '2' Title
-      th Login
-      th Url
-      th Password
-  - @entries.each do |entry|
-    tr
-      td
-        div.icon-base class="icon-#{entry.icon}"
-      td = entry.title
-      td = '******'
-      td = link_to entry.url, entry.url, {:only_path => false}
-      td = '******'
+- if @entries.present?
+  table#entries-table
+    thead
+      tr
+        th colspan='2' Title
+        th data-sorter='false' Login
+        th Url
+        th data-sorter='false' Password
+    tbody
+      - @entries.each do |entry|
+        tr
+          td.icon-column
+            div.icon-base class="icon-#{entry.icon}"
+          td = entry.title
+          td = '******'
+          td = link_to entry.url, entry.url, {:only_path => false}
+          td = '******'
