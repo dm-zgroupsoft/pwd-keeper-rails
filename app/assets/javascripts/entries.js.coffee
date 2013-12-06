@@ -34,3 +34,9 @@ window.addNewEntry = (groupId) ->
 # edit entry
 editEntry = (groupId, entryId) ->
   $('#group-dialog-holder').load "/groups/#{groupId}/entries/#{entryId}/edit", editEntryDialog
+
+# remove entry
+removeEntry = (groupId, entryId) ->
+  $.ajax("/groups/#{groupId}/entries/#{entryId}", method: 'delete').done (data) ->
+    node = $('#groups-tree-holder').dynatree 'getActiveNode'
+    $('#entries-holder').load node.data.url, onEntriesHolderLoaded

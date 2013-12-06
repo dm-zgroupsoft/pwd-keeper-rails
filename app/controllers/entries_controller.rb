@@ -25,4 +25,9 @@ class EntriesController < ApplicationController
     entry.save
     render :json => entry
   end
+
+  def destroy
+    Entry.destroy(params[:id])
+    render :nothing => true
+  end
 end

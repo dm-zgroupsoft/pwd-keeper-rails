@@ -3,11 +3,12 @@
 }
 
 #entries-holder {
-  border: 1px dotted gray;
+  border: 1px solid silver;
   border-left: none;
   width: 600px;
   height: 506px;
   float: left;
+  overflow: auto;
 }
 
 #entries-table {
