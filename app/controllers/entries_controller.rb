@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   layout false
+
   def index
     @entries = Entry.where(:group_id => params[:group_id]).order(title: :asc)
   end
@@ -10,7 +11,13 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:group_id])
     @entry = Entry.find(params[:id])
+  end
+
+  def update
+    Entry.update(params[:id], params.require(:entry).permit!)
+    render :nothing => true
   end
 
   def create

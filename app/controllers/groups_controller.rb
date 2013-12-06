@@ -33,6 +33,6 @@ class GroupsController < ApplicationController
 
   def destroy
     Group.destroy(params[:id])
-    render :text => params[:id]
+    render :nothing => true
   end
 end

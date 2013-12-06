@@ -14,7 +14,7 @@
       td = f.text_field :url, :class => 'text ui-widget-content ui-corner-all'
     tr
       td = f.label :password, 'Password: '
-      td = f.password_field :password, :class => 'text ui-widget-content ui-corner-all'
+      td = f.password_field :password, :class => 'text ui-widget-content ui-corner-all', :value => @entry.password
     tr
       td = f.label :icon, 'Icon: '
       td = f.select :icon, options_for_select((0..68).map { |i| ['', i, {'data-icon' => "icon-base icon-#{i}"}] }, :selected => @entry.icon), {}, {'data-size' => 6}

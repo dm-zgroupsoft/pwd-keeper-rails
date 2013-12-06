@@ -8,7 +8,7 @@
         th data-sorter='false' Password
     tbody
       - @entries.each do |entry|
-        tr
+        tr id="#{entry.id}"
           td.icon-column
             div.icon-base class="icon-#{entry.icon}"
           td = entry.title
