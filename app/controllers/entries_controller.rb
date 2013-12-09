@@ -6,12 +6,13 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @group = Group.find(params[:group_id])
-    @entry = @group.entries.build
+    @groups = current_user.groups.where(:group_id => nil)
+    group = Group.find(params[:group_id])
+    @entry = group.entries.build
   end
 
   def edit
-    @group = Group.find(params[:group_id])
+    @groups = current_user.groups.where(:group_id => nil)
     @entry = Entry.find(params[:id])
   end
 
