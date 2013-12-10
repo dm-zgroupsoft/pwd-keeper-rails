@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130221143500) do
+ActiveRecord::Schema.define(version: 20131210151223) do
 
   create_table "entries", force: true do |t|
     t.string   "title",                            null: false
@@ -26,17 +26,26 @@ ActiveRecord::Schema.define(version: 20130221143500) do
 
   add_index "entries", ["group_id"], name: "index_entries_on_group_id"
 
+  create_table "group_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true
+  add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx"
+
   create_table "groups", force: true do |t|
     t.string   "title",                            null: false
     t.integer  "icon",       limit: 4, default: 0, null: false
-    t.integer  "position",             default: 0, null: false
-    t.integer  "group_id"
+    t.integer  "sort_order"
+    t.integer  "parent_id"
     t.integer  "user_id",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "groups", ["group_id"], name: "index_groups_on_group_id"
+  add_index "groups", ["parent_id"], name: "index_groups_on_parent_id"
   add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
   create_table "users", force: true do |t|

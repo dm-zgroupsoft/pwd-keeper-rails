@@ -29,6 +29,9 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
+    closure_tree (4.2.9)
+      activerecord (>= 3.0.0)
+      with_advisory_lock (>= 0.0.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -127,11 +130,14 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    with_advisory_lock (0.0.10)
+      activerecord (>= 3.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  closure_tree
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 1.2)

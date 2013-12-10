@@ -26,6 +26,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
+gem 'closure_tree'
 
 gem 'slim-rails'
 

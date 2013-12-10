@@ -2,7 +2,7 @@
   table.form-table
     tr
       td = f.label :group_id, 'Group: '
-      td = f.select :group_id, options_for_select(Group.as_options(@groups), :selected => @entry.group_id), {}, {'data-size' => 6}
+      td = f.select :group_id, options_for_select(@groups, :selected => @entry.group_id), {}, {'data-size' => 6}
       td = f.label :icon, 'Icon: '
       td = f.select :icon, options_for_select((0..68).map { |i| ['', i, {'data-icon' => "icon-base icon-#{i}"}] }, :selected => @entry.icon), {}, {'data-size' => 6}
     tr

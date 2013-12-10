@@ -1,13 +1,11 @@
 $ ->
   # create groups tree
   holder = $('#groups-tree-holder').dynatree initAjax: {url: '/groups'}, onActivate: (node)->
-    $('#entries-holder').load node.data.url, onEntriesHolderLoaded
+    $('#entries-holder').load "/groups/#{node.data.key}/entries", onEntriesHolderLoaded
   ,
   dnd: preventVoidMoves: true, onDragStart: (node) ->
     true
   , onDragEnter: (node, sourceNode) ->
-      true
-  , onDragStart: (node, sourceNode) ->
       true
   , onDragOver: (node, sourceNode, hitMode) ->
       if node.isDescendantOf sourceNode
@@ -41,7 +39,7 @@ $ ->
 
   # context menu actions
   addGroup = (parentGroupId) ->
-    $('#group-dialog-holder').load "/groups/new?group_id=#{parentGroupId}", editGroupDialog
+    $('#group-dialog-holder').load "/groups/new?parent_id=#{parentGroupId}", editGroupDialog
 
   editGroup = (groupId) ->
     $('#group-dialog-holder').load "/groups/#{groupId}/edit", editGroupDialog
@@ -55,10 +53,10 @@ $ ->
     $('select').selectBoxIt()
     $('#edit-group-dialog').dialog height: 180, width: 360, modal: true,
     buttons: Ok: ->
-      is_new = $(this).find('form #group_id').val().length == 0
-      $.ajax($(this).find('form').attr('action'), method: $(this).find('form').attr('method'), data: $(this).find('form').serialize()).done (result) ->
-        if is_new
-          parent = if result.group_id then holder.dynatree('getTree').getNodeByKey result.group_id.toString() else holder.dynatree('getRoot')
+      action = $(this).find('form').attr('action')
+      $.ajax(action, method: 'post', data: $(this).find('form').serialize()).done (result) ->
+        if action == '/groups'
+          parent = if result.parent_id then holder.dynatree('getTree').getNodeByKey result.parent_id.toString() else holder.dynatree('getRoot')
           parent.addChild(result)
           parent.expand()
         else

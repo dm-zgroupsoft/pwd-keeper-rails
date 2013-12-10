@@ -3,14 +3,14 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.string :title, :null => false
       t.integer :icon, :limit => 4, :null => false, :default => 0
-      t.integer :position, :null => false, :default => 0
-      t.integer :group_id
+      t.integer :sort_order
+      t.integer :parent_id
       t.integer :user_id, :null => false
 
       t.timestamps
     end
 
-    add_index :groups, :group_id
+    add_index :groups, :parent_id
     add_index :groups, :user_id
   end
 end

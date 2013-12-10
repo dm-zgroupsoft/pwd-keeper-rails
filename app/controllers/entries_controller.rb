@@ -6,13 +6,13 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @groups = current_user.groups.where(:group_id => nil)
+    @groups = Group.where(user: current_user).arrange_as_array
     group = Group.find(params[:group_id])
     @entry = group.entries.build
   end
 
   def edit
-    @groups = current_user.groups.where(:group_id => nil)
+    @groups = Group.where(user: current_user).arrange_as_array
     @entry = Entry.find(params[:id])
   end
 
@@ -22,9 +22,8 @@ class EntriesController < ApplicationController
   end
 
   def create
-    entry = Entry.new(params.require(:entry).permit!)
-    entry.save
-    render :json => entry
+    Entry.create(params.require(:entry).permit!)
+    render :nothing => true
   end
 
   def destroy

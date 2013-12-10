@@ -3,15 +3,12 @@ class GroupsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json do
-        groups = current_user.groups.where(:group_id => nil)
-        render :json => groups
-      end
+      format.json { render json: Group.where(user: current_user).json_tree }
     end
   end
 
   def new
-    @group = Group.new(:group_id => params[:group_id])
+    @group = Group.new(:parent_id => params[:parent_id])
     render :layout => false
   end
 
