@@ -11,7 +11,8 @@ $ ->
       if node.isDescendantOf sourceNode
         false
   , onDrop: (node, sourceNode, hitMode, ui, draggable) ->
-    sourceNode.move node, hitMode
+    $.ajax("groups/#{sourceNode.data.key}/move", method: 'patch', data: {target_id: node.data.key, mode: hitMode}).done (result) ->
+      sourceNode.move node, hitMode
 
   # activate tree nodes by right mouse too
   holder.mousedown (e) ->
@@ -39,7 +40,9 @@ $ ->
 
   # context menu actions
   addGroup = (parentGroupId) ->
-    $('#group-dialog-holder').load "/groups/new?parent_id=#{parentGroupId}", editGroupDialog
+    url = '/groups/new'
+    url += "?parent_id=#{parentGroupId}" if parentGroupId
+    $('#group-dialog-holder').load url, editGroupDialog
 
   editGroup = (groupId) ->
     $('#group-dialog-holder').load "/groups/#{groupId}/edit", editGroupDialog
@@ -70,4 +73,4 @@ $ ->
 
   # add group to root node
   $('#add-group').click ->
-    addGroup ''
+    addGroup null

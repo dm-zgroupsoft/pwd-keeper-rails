@@ -28,6 +28,20 @@ class GroupsController < ApplicationController
     render :json => group
   end
 
+  def move
+    source = Group.find(params[:id])
+    target = Group.find(params[:target_id])
+    mode = params[:mode]
+    if mode == 'over'
+      target.add_child(source)
+    elsif mode == 'after'
+      target.append_sibling(source)
+    else
+      target.prepend_sibling(source)
+    end
+    render :nothing => true
+  end
+
   def destroy
     Group.destroy(params[:id])
     render :nothing => true

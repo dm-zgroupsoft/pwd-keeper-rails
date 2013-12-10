@@ -6,12 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 u1 = User.create(email: 'dm.zgroupsoft@gmail.com', password: '11111111')
+root = u1.groups.root
 
-r1 = Group.create(title: 'Sample', icon: 6, user_id: u1.id)
-r2 = Group.create(title: 'Next', icon: 7, user_id: u1.id)
-r3 = Group.create(title: 'Third', icon: 8, user_id: u1.id)
-r4 = Group.create(title: 'Fourth', icon: 9, user_id: u1.id)
-r5 = Group.create(title: 'Fifth', icon: 10, user_id: u1.id)
+r1 = root.children.create(title: 'Sample', icon: 6, user_id: u1.id)
+r2 = root.children.create(title: 'Next', icon: 7, user_id: u1.id)
+r3 = root.children.create(title: 'Third', icon: 8, user_id: u1.id)
+r4 = root.children.create(title: 'Fourth', icon: 9, user_id: u1.id)
+r5 = root.children.create(title: 'Fifth', icon: 10, user_id: u1.id)
 
 r2f1 = r2.children.create(title: 'Child', icon: 12, user_id: u1.id)
 r2f2 = r2.children.create(title: 'Folder', icon: 16, user_id: u1.id)

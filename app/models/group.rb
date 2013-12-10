@@ -9,14 +9,14 @@ class Group < ActiveRecord::Base
   end
 
   def self.json_tree(nodes = nil)
-    nodes = hash_tree unless nodes
+    nodes = hash_tree.values[0] unless nodes
     nodes.map do |node, sub_nodes|
       node.as_json.merge(children: json_tree(sub_nodes).compact)
     end
   end
 
   def self.arrange_as_array(groups = nil)
-    groups = hash_tree unless groups
+    groups = hash_tree.values[0] unless groups
     result = []
     groups.each do |node, children|
       result << ['&nbsp;&nbsp;' * node.depth + node.title, node.id, {'data-icon' => "icon-base icon-#{node.icon}"}]

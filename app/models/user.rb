@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :groups
+
+  after_create :create_root_group
+
+  def create_root_group
+    groups.create(title: 'root', icon: 0)
+  end
 end
