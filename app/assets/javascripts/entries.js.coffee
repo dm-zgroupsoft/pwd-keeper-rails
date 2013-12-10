@@ -11,7 +11,7 @@ editEntryDialog = () ->
     $(this).dialog 'close'
 
 window.onEntriesHolderLoaded = () ->
-  $('#entries-table').tablesorter({theme: 'jui', headerTemplate: '{content} {icon}', widgets: ['uitheme', 'zebra'], sortList: [[0,0]] })
+  $('#entries-table').tablesorter({theme: 'jui', headerTemplate: '{content} {icon}', widgets: ['uitheme', 'zebra'], sortList: if $('#entries-table tr').length > 1 then [[0,0]] else [] })
   $('#entries-table').contextMenu selector: 'tr', callback: (key, options) ->
     entryId = this.attr('id')
     groupId = $('#groups-tree-holder').dynatree('getActiveNode').data.key
