@@ -6,6 +6,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string :login
       t.string :password, :null => false
       t.string :url
+      t.text :comment
       t.integer :group_id, :null => false
 
       t.timestamps

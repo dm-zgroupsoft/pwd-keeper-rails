@@ -27,6 +27,6 @@ r4f2 = r4.children.create(title: 'One', icon: 25, user_id: u1.id)
 
 e1 = r3.entries.create(title: 'Test', login: 'User', password: '11111', icon: 26, url: 'http://debian.org')
 e2 = r3.entries.create(title: 'Test2', login: 'User2', password: '11111', icon: 27, url: 'http://google.com')
-e3 = r3.entries.create(title: 'Test3', login: 'User3', password: '11111', icon: 28, url: 'http://sample.org')
+e3 = r3.entries.create(title: 'Test3', login: 'User3', password: '11111', icon: 28, url: 'http://sample.org', :comment => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
 e4 = r3.entries.create(title: 'Test4', login: 'User4', password: '11111', icon: 29, url: 'http://smaple.com')
 e5 = r3.entries.create(title: 'Test5', login: 'User5', password: '11111', icon: 30, url: 'http://mail.com')

@@ -13,6 +13,11 @@ table {
 
 .form-table {
   border-spacing: 10px;
+  textarea {
+    width: 300px;
+    height: 50px;
+    resize: none;
+  }
 }
 
 .icon-base, .custom-dynatree-icon-base span.dynatree-icon {

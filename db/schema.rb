@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131210151223) do
     t.string   "login"
     t.string   "password",                         null: false
     t.string   "url"
+    t.text     "comment"
     t.integer  "group_id",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"

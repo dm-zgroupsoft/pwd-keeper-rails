@@ -1,7 +1,7 @@
 # create add/edit entry dialog
 editEntryDialog = () ->
   $('select').selectBoxIt()
-  $('#edit-entry-dialog').dialog height: 300, width: 420, modal: true,
+  $('#edit-entry-dialog').dialog height: 360, width: 420, modal: true,
   buttons: Ok: ->
     $.ajax($(this).find('form').attr('action'), method: 'post', data: $(this).find('form').serialize()).done (result) ->
       node = $('#groups-tree-holder').dynatree 'getActiveNode'
@@ -39,4 +39,4 @@ editEntry = (groupId, entryId) ->
 removeEntry = (groupId, entryId) ->
   $.ajax("/groups/#{groupId}/entries/#{entryId}", method: 'delete').done (data) ->
     node = $('#groups-tree-holder').dynatree 'getActiveNode'
-    $('#entries-holder').load node.data.url, onEntriesHolderLoaded
+    $('#entries-holder').load "/groups/#{node.data.key}/entries", onEntriesHolderLoaded

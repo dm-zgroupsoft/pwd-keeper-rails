@@ -2,15 +2,17 @@ table#entries-table
   thead
     tr
       th colspan='2' Title
-      th data-sorter='false' Login
+      th.short-column data-sorter='false' Login
       th Url
-      th data-sorter='false' Password
+      th.short-column data-sorter='false' Password
+      th.comment-column Comment
   tbody
     - @entries.each do |entry|
       tr id="#{entry.id}"
         td.icon-column
           div.icon-base class="icon-#{entry.icon}"
-        td = entry.title
+        td = truncate(entry.title, :length => 20)
         td = '******'
-        td = link_to entry.url, entry.url, {:only_path => false}
+        td = link_to truncate(entry.url, :length => 30) , entry.url, {:only_path => false}
         td = '******'
+        td = truncate(entry.comment, :length => 40)

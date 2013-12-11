@@ -17,3 +17,6 @@
     tr
       td = f.label :password, 'Password: '
       td colspan='3'= f.password_field :password, :class => 'text ui-widget-content ui-corner-all', :value => @entry.password
+    tr
+      td = f.label :comment, 'Comment: '
+      td colspan='3'= f.text_area :comment, :class => 'text ui-widget-content ui-corner-all'
