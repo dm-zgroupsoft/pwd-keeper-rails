@@ -40,9 +40,7 @@ $ ->
 
   # context menu actions
   addGroup = (parentGroupId) ->
-    url = '/groups/new'
-    url += "?parent_id=#{parentGroupId}" if parentGroupId
-    $('#group-dialog-holder').load url, editGroupDialog
+    $('#group-dialog-holder').load "/groups/new?parent_id=#{parentGroupId}", editGroupDialog
 
   editGroup = (groupId) ->
     $('#group-dialog-holder').load "/groups/#{groupId}/edit", editGroupDialog
@@ -59,7 +57,7 @@ $ ->
       action = $(this).find('form').attr('action')
       $.ajax(action, method: 'post', data: $(this).find('form').serialize()).done (result) ->
         if action == '/groups'
-          parent = if result.parent_id then holder.dynatree('getTree').getNodeByKey result.parent_id.toString() else holder.dynatree('getRoot')
+          parent = holder.dynatree('getTree').getNodeByKey(result.parent_id.toString()) || holder.dynatree('getRoot')
           parent.addChild(result)
           parent.expand()
         else
@@ -73,4 +71,4 @@ $ ->
 
   # add group to root node
   $('#add-group').click ->
-    addGroup null
+    addGroup ''

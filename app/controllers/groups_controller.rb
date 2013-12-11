@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new(:parent_id => params[:parent_id])
+    @group = Group.new(:parent_id => params[:parent_id].empty? ? current_user.groups.root.id : params[:parent_id])
     render :layout => false
   end
 
