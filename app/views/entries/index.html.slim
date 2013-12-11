@@ -13,6 +13,6 @@ table#entries-table
           div.icon-base class="icon-#{entry.icon}"
         td = truncate(entry.title, :length => 20)
         td = '******'
-        td = link_to truncate(entry.url, :length => 30) , entry.url, {:only_path => false}
+        td = link_to truncate(entry.url, :length => 30) , entry.url, {:only_path => false, :target => :blank}
         td = '******'
         td = truncate(entry.comment, :length => 40)

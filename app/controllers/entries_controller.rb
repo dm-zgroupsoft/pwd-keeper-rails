@@ -5,6 +5,10 @@ class EntriesController < ApplicationController
     @entries = Entry.where(:group_id => params[:group_id]).order(title: :asc)
   end
 
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
   def new
     @groups = Group.where(user: current_user).arrange_as_array
     group = Group.find(params[:group_id])

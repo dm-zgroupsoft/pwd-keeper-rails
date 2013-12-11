@@ -11,10 +11,18 @@ editEntryDialog = () ->
     $(this).dialog 'close'
 
 window.onEntriesHolderLoaded = () ->
+  groupId = $('#groups-tree-holder').dynatree('getActiveNode').data.key
+
   $('#entries-table').tablesorter({theme: 'jui', headerTemplate: '{content} {icon}', widgets: ['uitheme', 'zebra'], sortList: if $('#entries-table tr').length > 1 then [[0,0]] else [] })
+
+  $('#entries-table tr').click ->
+    $('#entries-table tr').removeClass 'entry-selected'
+    $(this).addClass 'entry-selected'
+    entryId = $(this).attr('id')
+    $('#entry-holder').load "/groups/#{groupId}/entries/#{entryId}"
+
   $('#entries-table').contextMenu selector: 'tr', callback: (key, options) ->
     entryId = this.attr('id')
-    groupId = $('#groups-tree-holder').dynatree('getActiveNode').data.key
     switch key
       when 'add' then addNewEntry groupId
       when 'edit' then editEntry groupId, entryId
