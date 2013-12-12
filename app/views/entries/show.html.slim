@@ -1,0 +1,24 @@
+table#entry-table.ui-widget
+  thead
+    tr
+      th colspan='4' = @entry.title
+  tbody
+    tr
+      td.col1.bold Group:
+      td.col2 = @entry.group.title
+      td.bold Creation:
+      td = @entry.created_at.strftime('%m.%d.%Y')
+    tr
+      td.bold Username:
+      td = '*****'
+      td.bold Modification:
+      td = @entry.updated_at.strftime('%m.%d.%Y')
+    tr
+      td.bold Password:
+      td colspan='3' = '*****'
+    tr
+      td.bold Url:
+      td colspan='3' = link_to @entry.url, @entry.url, {:only_path => false, :target => :blank}
+    tr
+      td.bold Comment:
+      td colspan='3' = @entry.comment

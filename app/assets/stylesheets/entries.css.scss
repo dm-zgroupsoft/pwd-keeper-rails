@@ -16,15 +16,6 @@
   }
 }
 
-#entry-holder {
-  border: 1px solid silver;
-  border-left: none;
-  border-top: none;
-  height: 200px;
-  width: 700px;
-  float: left;
-}
-
 #entries-table {
   border: 0;
   padding: 0;
@@ -41,6 +32,34 @@
   .short-column {
     max-width: 70px;
     width: 70px;
+  }
+}
+
+#entry-holder {
+  border: 1px solid silver;
+  border-left: none;
+  border-top: none;
+  height: 200px;
+  width: 700px;
+  float: left;
+}
+
+#entry-table {
+  th {
+    text-align: left;
+    background-color: silver;
+    height: 19px;
+    padding: 4px;
+  }
+  td {
+    vertical-align: top;
+    padding: 3px;
+  }
+  .col1 {
+    width: 10%;
+  }
+  .col2 {
+    width: 40%;
   }
 }
 

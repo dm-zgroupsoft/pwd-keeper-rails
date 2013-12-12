@@ -6,7 +6,7 @@ class EntriesController < ApplicationController
   end
 
   def show
-    @entry = Entry.find(params[:id])
+    @entry = Entry.eager_load(:group).find(params[:id])
   end
 
   def new
