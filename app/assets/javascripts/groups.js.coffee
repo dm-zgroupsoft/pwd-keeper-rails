@@ -21,7 +21,6 @@ $ ->
       e.target.click()
 
   # attach context menu to each group in tree
-
   holder.contextMenu selector: 'a', callback: (key, options) ->
     groupId = $.ui.dynatree.getNode(this).data.key
     switch key

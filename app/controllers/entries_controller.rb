@@ -22,12 +22,12 @@ class EntriesController < ApplicationController
 
   def update
     Entry.update(params[:id], params.require(:entry).permit!)
-    render :nothing => true
+    render :text => params[:id]
   end
 
   def create
-    Entry.create(params.require(:entry).permit!)
-    render :nothing => true
+    entry = Entry.create(params.require(:entry).permit!)
+    render :text => entry.id
   end
 
   def destroy
