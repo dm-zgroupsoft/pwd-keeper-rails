@@ -19,4 +19,5 @@
 //= require jquery.selectBoxIt
 //= require jquery.tablesorter
 //= require jquery.tablesorter.widgets
+//= require ZeroClipboard
 //= require_tree .
