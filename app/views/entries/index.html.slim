@@ -8,11 +8,15 @@ table#entries-table
       th.comment-column Comment
   tbody
     - @entries.each do |entry|
-      tr id="#{entry.id}"
+      tr id=entry.id
         td.icon-column
-          div.icon-base class="icon-#{entry.icon}"
+          .icon-base class="icon-#{entry.icon}"
         td = truncate(entry.title, :length => 20)
-        td = '******'
+        td
+          span &#42;&#42;&#42;&#42;&#42;&#42;
+          .copy-login data-clipboard-text=entry.login data-copied-hint='copied!' title='copy to clipboard'
         td = link_to truncate(entry.url, :length => 30) , entry.url, {:only_path => false, :target => :blank}
-        td = '******'
+        td
+          span &#42;&#42;&#42;&#42;&#42;&#42;
+          .copy-pass data-clipboard-text=entry.password data-copied-hint='copied!' title='copy to clipboard'
         td = truncate(entry.comment, :length => 40)

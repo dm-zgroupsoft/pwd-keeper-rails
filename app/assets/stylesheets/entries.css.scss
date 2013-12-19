@@ -12,7 +12,7 @@
 
 .entry-selected {
   td, td:hover {
-    background-color: lightskyblue!important;
+    background-color: lightskyblue !important;
   }
 }
 
@@ -73,4 +73,18 @@
   tr.ui-state-default {
     background-color: linen;
   }
+}
+
+.copy-login, .copy-pass {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAW0lEQVR42mNkgIKGhob/DEQCoFpGGJsR2YD6+nqCmhsbG+lgAEgRsQCnAcS6hvYGYPMOstxIcwG6odR3ATZ/YtOEDBixKcKXrGGugyVpsgyAqmHE6wJ8fkfOTACWlX8HDBsg/gAAAABJRU5ErkJggg==');
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  float: right;
+  padding-right: 3px;
+  cursor: pointer;
+}
+
+.tipsy {
+  font-size: 12px;
 }

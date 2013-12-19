@@ -20,4 +20,5 @@
 //= require jquery.tablesorter
 //= require jquery.tablesorter.widgets
 //= require ZeroClipboard
+//= require jquery.tipsy
 //= require_tree .

@@ -16,6 +16,9 @@ window.onEntriesHolderLoaded = () ->
 
   $('#entries-table').tablesorter({theme: 'jui', headerTemplate: '{content} {icon}', widgets: ['uitheme', 'zebra'], sortList: if $('#entries-table tr').length > 1 then [[0,0]] else [] })
 
+  $('.copy-login, .copy-pass').each (i, element) ->
+    initZClip(element)
+
   $('#entries-table tr').click ->
     $('#entries-table tr').removeClass 'entry-selected'
     $(this).addClass 'entry-selected'
@@ -53,3 +56,12 @@ removeEntry = (groupId, entryId) ->
     node = $('#groups-tree-holder').dynatree 'getActiveNode'
     $('#entries-holder').load "/groups/#{node.data.key}/entries", onEntriesHolderLoaded
     $('#entry-holder').html ''
+
+initZClip = (element) ->
+  clip = new ZeroClipboard()
+  clip.glue(element);
+  clip.on 'load', (client) ->
+    $(clip.htmlBridge).tipsy { gravity: $.fn.tipsy.autoNS }
+  clip.on 'complete', (client, args) ->
+    copied_hint = $(this).data('copied-hint');
+    $(clip.htmlBridge).prop('title', copied_hint).tipsy('show')
